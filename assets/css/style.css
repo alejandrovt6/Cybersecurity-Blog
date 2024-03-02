@@ -1,0 +1,291 @@
+/******************************* 
+COLORS
+********************************/
+:root { /* TODO: CHANGE */
+    --primary: #1189da;
+    --secondary: #005a7e;
+    --ternary: #FCE76F;
+    --success: green;
+    --danger: red;
+    --black: black;
+    --white: white;
+    --bg1: #B1E0DC;
+    --bg2: rgb(238, 201, 146);
+}
+
+/******************************* 
+FONTS
+********************************/
+@font-face { 
+    font-family: "fajala";
+    src: url(../fonts/fuente.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/******************************* 
+RESET
+********************************/
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+
+.clearfix { /* Clean floats*/
+    clear: both;
+    float: none;
+}
+
+body {
+    background: var(--bg1);
+}
+
+/******************************* 
+HEADER
+********************************/
+#header {
+    width: 85%;
+    height: auto;
+    background: transparent;
+    margin: 0px auto;
+}
+
+#logo{
+    float:left;
+    width: 540px;
+    height: 110px;
+}
+
+#logo a {
+    font-family: "fajala", Helvetica;
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: var(--primary);
+    text-shadow: 0px 0px 0px black, 1px 1px 0px black, 2px 2px 0px black;
+    transition: all 500ms;
+    line-height: 100px;
+    margin-left: 10px;
+}
+
+#logo a:hover {
+    cursor: pointer;
+    /* color: var(--secondary); */
+    text-shadow: 0px 0px 0px black, -1px -1px 0px black, -2px -2px 0px black;
+}
+
+/******************************* 
+MENU
+********************************/
+#menu {
+    clear: both;
+    width: 100%;
+    height: 45px;
+    background: linear-gradient(to bottom, var(--ternary) 0px, var(--ternary) 100%);
+    border: 1px solid var(--black);
+    border-radius: 8px;
+    box-shadow: 0px 1px 1px var(--black);
+    overflow: hidden;
+}
+
+#menu ul {
+    list-style-type: none;
+}
+
+#menu ul li {
+    float: left;
+    line-height: 45px;
+    /* border-right: 2px solid var(--secondary); */
+}
+
+#menu ul li:hover {
+    background: var(--bg2);
+}
+
+#menu ul li a {
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    color: var(--primary);
+}
+
+/******************************* 
+CONTAINER
+********************************/
+#container {
+    width: 85%;
+    /* min-height: auto; */
+    height: auto;
+    margin: 30px auto 30px auto;
+}
+
+/******************************* 
+SIDEBAR
+********************************/
+#sidebar {
+    float: left;
+    width: 15%;
+    height: auto;
+    margin-left: 30px;
+}
+
+.block-aside {
+    display: block;
+    width: 80%;
+    margin: 0px 50px 50px 0px;
+    background: var(--white);
+    color: var(--secondary);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 1px var(--primary), 3px 0px 7px var(--primary),0px 0px 1px var(--secondary) inset;
+}
+
+.block-aside h3 {
+    margin-bottom: 15px;
+}
+
+label,
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    display: block;
+    width: 95%;
+    margin: 10px 0px 3px 0px ;
+}
+
+input[type="button"],
+input[type="submit"],
+.btn {
+    margin: 15px 0px 5px 0px ;
+    display: block;
+    border-radius: 5px;
+    color: var(--white);
+    background: var(--primary);
+    cursor: pointer;
+    padding: 7px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    margin-bottom: 1px;
+    padding: 5px;
+}
+
+.btn {
+    width: 130px;
+    text-align: center;
+}
+
+.btn-primary {
+    width: 130px;
+    text-align: center;
+    background-color: var(--primary);
+}
+.btn-second {
+    width: 130px;
+    text-align: center;
+    background-color: var(--secondary);
+}
+
+.btn-danger {
+    width: 130px;
+    text-align: center;
+    background-color: var(--danger);
+}
+
+/******************************* 
+MAIN
+********************************/
+#main {
+    float: left;
+    width: 75%;
+    min-height: 600px;
+    background: var(--bg2);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px var(--black);
+    /* margin-left: 20px;
+    margin-bottom: 60px; */
+    margin: auto auto 60px 20px;
+    padding: 25px;
+    overflow: hidden;
+}
+
+#main h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+#main h2 {
+    font-size: 22px;
+    margin: 25px auto 25px auto;
+    color: var(--secondary);
+}
+
+#main p {
+    margin-top: 10px;
+    /* color: var(--black); */
+}
+
+#main a {
+    color: var(--black);
+}
+
+#see-all a {
+    display: block;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 50px auto auto auto;
+    color: var(--white);
+    background: var(--primary);
+    border: 1px solid var(--secondary);
+    cursor: pointer;
+    width: 160px;
+    text-align: center;
+}
+
+.read-more {
+    color: var(--primary);
+    /* text-decoration: underline; */
+    cursor: pointer; 
+}
+  
+/******************************* 
+FOOTER
+********************************/
+#footer {
+    width: 85%;
+    clear:both; 
+    margin: 0px auto 10px auto;
+    background-color: var(--bg2);
+    border: 1px solid #000000;
+    border-radius: 8px 8px 0px 0px;
+    color: var(--black);
+    height: auto;
+    padding: 15px;
+    text-align: center;
+}
+
+/******************************* 
+ALERTS
+********************************/
+.alert {
+    padding: 5px;
+    font-size: 14px;
+    color: var(--white);
+    background-color: var(--success);
+    box-shadow: 0px 1px 3px var(--black);
+    margin-bottom: 15px;
+}
+
+.alert-error {
+    padding: 5px;
+    font-size: 14px;
+    color: var(--white);
+    background-color: var(--danger);
+    box-shadow: 0px 1px 3px var(--black);
+    margin-bottom: 15px;
+}
