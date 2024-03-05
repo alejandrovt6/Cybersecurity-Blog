@@ -141,7 +141,8 @@ SIDEBAR
     background: var(--white);
     color: var(--secondary);
     padding: 15px;
-    box-shadow: 0px 0px 1px var(--primary), 3px 0px 7px var(--primary),0px 0px 1px var(--secondary) inset;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px var(--black), 3px 0px 7px var(--black),0px 0px 1px var(--black) inset;
 }
 
 .block-aside h3 {
@@ -251,6 +252,7 @@ MAIN
     width: 160px;
     margin: 0px auto;
     margin-top:50px;
+    text-align: center;
 }
 
 .read-more {
@@ -268,7 +270,7 @@ FOOTER
     margin: 0px auto;
     background-color: var(--bg2);
     border: 1px solid #000000;
-    border-bottom: none;
+    /* border-bottom: none; */
     border-radius: 8px 8px 0px 0px;
     color: var(--black);
     height: auto;
