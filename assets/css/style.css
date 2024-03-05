@@ -95,7 +95,7 @@ MENU
 
 #menu ul li {
     float: left;
-    line-height: 45px;
+    line-height: 44px;
     /* border-right: 2px solid var(--secondary); */
 }
 
@@ -107,7 +107,7 @@ MENU
     display: block;
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--primary);
 }
 
@@ -116,29 +116,31 @@ CONTAINER
 ********************************/
 #container {
     width: 85%;
-    /* min-height: auto; */
     height: auto;
-    margin: 30px auto 30px auto;
+/*    min-height: 600px;*/
+    margin: 0px auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 /******************************* 
 SIDEBAR
 ********************************/
 #sidebar {
-    float: left;
-    width: 15%;
+    float:right;
+    width: 27%;
     height: auto;
-    margin-left: 30px;
 }
 
 .block-aside {
-    display: block;
-    width: 80%;
-    margin: 0px 50px 50px 0px;
+    display:block;
+    width: 90%;
+    margin: 0px auto;
+    margin-bottom: 35px;
+    /* margin: 0px 50px 50px 0px; */
     background: var(--white);
     color: var(--secondary);
-    padding: 20px;
-    border-radius: 8px;
+    padding: 15px;
     box-shadow: 0px 0px 1px var(--primary), 3px 0px 7px var(--primary),0px 0px 1px var(--secondary) inset;
 }
 
@@ -152,31 +154,33 @@ input[type="email"],
 input[type="password"] {
     display: block;
     width: 95%;
-    margin: 10px 0px 3px 0px ;
+    margin-top:2px;
+    margin-bottom: 2px;
 }
 
 input[type="button"],
 input[type="submit"],
 .btn {
-    margin: 15px 0px 5px 0px ;
+    margin-top: 5px;
+    margin-bottom: 5px;
     display: block;
-    border-radius: 5px;
+    border-radius: 2px;
     color: var(--white);
     background: var(--primary);
-    cursor: pointer;
+    cursor:pointer;
     padding: 7px;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    margin-bottom: 1px;
     padding: 5px;
+    margin-bottom: 10px;
 }
 
 .btn {
-    width: 130px;
     text-align: center;
+    width: 130px;
 }
 
 .btn-primary {
@@ -201,32 +205,34 @@ MAIN
 ********************************/
 #main {
     float: left;
-    width: 75%;
-    min-height: 600px;
+    width: 65%;
+    min-height: 572px;
     background: var(--bg2);
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 0px 5px var(--black);
     /* margin-left: 20px;
     margin-bottom: 60px; */
-    margin: auto auto 60px 20px;
-    padding: 25px;
+    margin-left: 20px;
+    padding: 20px;
     overflow: hidden;
 }
 
 #main h1 {
-    font-size: 34px;
-    margin-bottom: 10px;
+    font-size: 32px;
+    letter-spacing: 1px;
     color: var(--primary);
 }
 
 #main h2 {
-    font-size: 22px;
-    margin: 25px auto 25px auto;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-family: "fajala";
+    margin-top: 25px;
     color: var(--secondary);
 }
 
 #main p {
-    margin-top: 10px;
+    margin-top: 8px;
     /* color: var(--black); */
 }
 
@@ -236,15 +242,15 @@ MAIN
 
 #see-all a {
     display: block;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 50px auto auto auto;
+    border-radius: 2px;
+    padding: 15px;
     color: var(--white);
     background: var(--primary);
     border: 1px solid var(--secondary);
-    cursor: pointer;
+    cursor:pointer;
     width: 160px;
-    text-align: center;
+    margin: 0px auto;
+    margin-top:50px;
 }
 
 .read-more {
@@ -257,11 +263,12 @@ MAIN
 FOOTER
 ********************************/
 #footer {
+    clear:both;
     width: 85%;
-    clear:both; 
-    margin: 0px auto 10px auto;
+    margin: 0px auto;
     background-color: var(--bg2);
     border: 1px solid #000000;
+    border-bottom: none;
     border-radius: 8px 8px 0px 0px;
     color: var(--black);
     height: auto;

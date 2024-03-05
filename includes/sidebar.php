@@ -1,12 +1,10 @@
-
-
 <!-- ASIDE -->
 <aside id="sidebar">
     <!-- Incorrect login -->
     <?php 
         if(isset($_SESSION['user'])) :
         // Delete error
-        unset($_SESSION['error-login']); 
+        // unset($_SESSION['error-login']); 
     ?>   
         <div id="user-logged" class="block-aside">
             <h3>Welcome, <?= $_SESSION['user']['name'].' '.$_SESSION['user']['lastname'];  ?></h3>
@@ -67,7 +65,6 @@
             endif; 
         ?>
 
-
         <form action="register.php" method="POST">
             <label for="name">Name</label>
             <input type="text" name="name">
@@ -87,6 +84,7 @@
 
             <input type="submit" value="Register" name="submit">
         </form>
+        
         <?php deleteError(); ?>
     </div>
     <?php endif; ?>

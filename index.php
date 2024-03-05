@@ -1,5 +1,6 @@
 <?php require_once 'includes/header.php'; ?>
 
+
 <!-- MAIN -->
 <div id="main">
     <h1>Last posts</h1>
@@ -27,8 +28,6 @@
     <div id="see-all">
         <a href="">See all posts</a>
     </div>
-</div>
-
 </div>
 
 <?php require_once 'includes/sidebar.php'; ?>
