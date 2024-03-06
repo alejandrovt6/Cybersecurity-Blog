@@ -31,10 +31,12 @@ if(isset($_POST)) {
     if(count($errors) == 0) {
         $sql = "INSERT INTO posts VALUES(NULL, $user, $category, '$title', '$description', CURDATE());"; 
         $save = mysqli_query($db, $sql);
+
+        header('Location: index.php');
+
     } else {
         $_SESSION['errors-post'] = $errors;
+        header('Location: createPost.php');
     }
 
 }
-
-header('Location: index.php');

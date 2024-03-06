@@ -17,6 +17,11 @@ function deleteError() {
         $deleted = true;
     }
 
+    if (isset($_SESSION['errors-post'])) {
+        $_SESSION['errors-post'] = null;
+        // $deleted = true;
+    }
+
     if (isset($_SESSION['completed'])) {
         $_SESSION['completed'] = null;
         $deleted = true;

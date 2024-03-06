@@ -10,9 +10,11 @@
     <form action="savePost.php" method="POST">
         <label for="title">Category name</label>
         <input type="text" name="title">
+        <?php echo isset($_SESSION['errors-post']) ? showError($_SESSION['errors-post'], 'title') : '' ?>
 
         <label for="description"></label>
         <textarea name="description" id="description" rows="10" cols="50"></textarea>
+        <?php echo isset($_SESSION['errors-post']) ? showError($_SESSION['errors-post'], 'description') : '' ?>
 
         <label for="category"></label>
         <select name="category">
@@ -31,9 +33,12 @@
                 endif;
             ?>
         </select>
+        <?php echo isset($_SESSION['errors-post']) ? showError($_SESSION['errors-post'], 'category') : '' ?>
 
         <input type="submit" value="Save">
     </form>
+
+    <?php deleteError(); ?>
 
 </div>
 

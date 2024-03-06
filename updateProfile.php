@@ -8,11 +8,11 @@ if(isset($_POST)) {
       session_start();
     }
 
-  // Get data form and escape data
+    // Get data form and escape data
     $name = isset($_POST['name']) ? mysqli_real_escape_string($db, $_POST['name']) : false;
     $lastname = isset($_POST['lastname']) ? mysqli_real_escape_string($db, $_POST['lastname']) : false;
     $email = isset($_POST['email']) ? mysqli_real_escape_string($db, trim($_POST['email'])) : false;
-    $password = isset($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
+    // $password = isset($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
 
     // Array errors
     $errors = array();
@@ -44,28 +44,40 @@ if(isset($_POST)) {
       }
 
       // Password
-      if (!empty($password)) {
-        $password_validate = true;
-      } else {
-        $password_validate = false;
-        $errors['password'] = 'ERROR password';
-      }
+    //   if (!empty($password)) {
+    //     $password_validate = true;
+    //   } else {
+    //     $password_validate = false;
+    //     $errors['password'] = 'ERROR password';
+    //   }
 
       $save_user = false;
       if(count($errors) == 0) {
         $save_user = true;
 
         // Encrypt password and verify
-        $password_encrypt = password_hash($password, PASSWORD_BCRYPT, ['cost=>4']);
+        // $password_encrypt = password_hash($password, PASSWORD_BCRYPT, ['cost=>4']);
         // var_dump($password_encrypt);
-        $sql = "INSERT INTO users VALUES(null, '$name', '$lastname', '$email', '$password_encrypt', (CURDATE()));";
-        // Insert user
+
+        // Update user
+        $user = $_SESSION['user'];
+        $sql = "UPDATE users SET ".
+                "name = '$name', ".
+                "lastname = '$lastname', ".
+                "email = '$email' ".
+                "WHERE id = ".$user['id'];
+
         $save = mysqli_query($db, $sql);
 
         if($save) {
-          $_SESSION['completed'] = 'Register OK';
+            // Update session
+            $_SESSION['user']['name'] = $name;
+            $_SESSION['user']['lastname'] = $lastname;
+            $_SESSION['user']['email'] = $email;
+
+            $_SESSION['completed'] = 'Update OK';
         } else {
-          $_SESSION['errors']['general'] = 'ERROR register';
+          $_SESSION['errors']['general'] = 'ERROR update';
         }
 
       } else {
@@ -73,4 +85,4 @@ if(isset($_POST)) {
       }
 }
 
-header('Location: index.php');
+header('Location: myProfile.php');
