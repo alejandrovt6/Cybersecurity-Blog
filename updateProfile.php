@@ -53,36 +53,44 @@ if(isset($_POST)) {
 
       $save_user = false;
       if(count($errors) == 0) {
+        $user = $_SESSION['user'];
         $save_user = true;
 
         // Encrypt password and verify
         // $password_encrypt = password_hash($password, PASSWORD_BCRYPT, ['cost=>4']);
         // var_dump($password_encrypt);
 
-        // Update user
-        $user = $_SESSION['user'];
-        $sql = "UPDATE users SET ".
-                "name = '$name', ".
-                "lastname = '$lastname', ".
-                "email = '$email' ".
-                "WHERE id = ".$user['id'];
-
-        $save = mysqli_query($db, $sql);
-
-        if($save) {
-            // Update session
-            $_SESSION['user']['name'] = $name;
-            $_SESSION['user']['lastname'] = $lastname;
-            $_SESSION['user']['email'] = $email;
-
-            $_SESSION['completed'] = 'Update OK';
-        } else {
-          $_SESSION['errors']['general'] = 'ERROR update';
-        }
-
+        // Add debugging statements
+        // echo "Original email: " . $user['email'] . "<br>";
+        // echo "New email: " . $email . "<br>";
+        
+        // Check if email just exist
+        if ($isset_user && $isset_user['id'] != $user['id']) {
+          $_SESSION['errors']['general'] = 'ERROR email just exist';
       } else {
-        $_SESSION['errors'] = $errors;
+          // Update user
+          $sql = "UPDATE users SET " .
+              "name = '$name', " .
+              "lastname = '$lastname', " .
+              "email = '$email' " .
+              "WHERE id = " . $user['id'];
+
+          $save = mysqli_query($db, $sql);
+
+          if ($save) {
+              // Update session
+              $_SESSION['user']['name'] = $name;
+              $_SESSION['user']['lastname'] = $lastname;
+              $_SESSION['user']['email'] = $email;
+
+              $_SESSION['completed'] = 'Update OK';
+          } else {
+              $_SESSION['errors']['general'] = 'ERROR update';
+          }
       }
+  } else {
+      $_SESSION['errors'] = $errors;
+  }
 }
 
 header('Location: myProfile.php');

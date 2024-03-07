@@ -19,7 +19,7 @@ function deleteError() {
 
     if (isset($_SESSION['errors-post'])) {
         $_SESSION['errors-post'] = null;
-        // $deleted = true;
+        $deleted = true;
     }
 
     if (isset($_SESSION['completed'])) {
@@ -43,11 +43,44 @@ function getCategories($connection) {
     return $result;
 }
 
+function getPosts($connection, $limit = null, $category = null) {
+    $sql = "SELECT p.*, c.*
+            FROM posts p
+            INNER JOIN categories c ON p.category_id = c.id";
+
+    if ($category) {
+    $sql .= " WHERE p.category_id = $category";
+    }
+
+    $sql .= " ORDER BY p.id DESC";
+
+    if ($limit) {
+
+    $sql .= " LIMIT $limit";
+    }
+
+    $posts = mysqli_query($connection, $sql);
+
+    if (!$posts) {
+
+    return false;
+    }
+
+    $num_rows = mysqli_num_rows($posts);
+    $result = array();
+
+    if ($num_rows >= 1) {
+    $result = $posts;
+    }
+
+    return $result;
+}
+
 function getLastPosts($connection) {
     $sql = "SELECT p.*, c.*
             FROM posts p
             INNER JOIN categories c ON p.category_id = c.id
-            ORDER BY p.id DESC LIMIT 4";
+            ORDER BY p.id DESC";
 
     $posts = mysqli_query($connection, $sql);
     $result = array();

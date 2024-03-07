@@ -3,10 +3,10 @@
 
 <!-- MAIN -->
 <div id="main">
-    <h1>Last posts</h1>
+    <h1>All posts</h1>
 
     <?php
-        $posts = getLastPosts($db, true);
+        $posts = getPosts($db);
         if(!empty($posts)):
             while($post = mysqli_fetch_assoc($posts)):
     ?>
@@ -25,9 +25,6 @@
         endif;
     ?>
 
-    <div id="see-all">
-        <a href="posts.php">See all posts</a>
-    </div>
 </div>
 
 <?php require_once 'includes/sidebar.php'; ?>
