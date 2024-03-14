@@ -1,11 +1,22 @@
+<?php require_once 'includes/connection.php'; ?>
+<?php require_once 'includes/helpers.php'; ?>
+
+<?php
+    $category_show = getCategory($db, $_GET['id']);
+    if(!isset($category_show['id'])) {
+        header("Location: index.php");
+    }
+?>
+
 <?php require_once 'includes/header.php'; ?>
 
 <!-- MAIN -->
 <div id="main">
-    <h1>All posts</h1>
+
+    <h1>Posts of <?= $category_show['name'] ?></h1>
 
     <?php
-        $posts = getPosts($db);
+        $posts = getPosts($db, null, $_GET['id']);
         if(!empty($posts)):
             while($post = mysqli_fetch_assoc($posts)):
     ?>
@@ -19,8 +30,15 @@
                 </p>
             </a>
         </article>
+
     <?php
         endwhile;
+        else:
+    ?>
+
+    <div class="alert-info">No posts in this category.</div>
+
+    <?php
         endif;
     ?>
 

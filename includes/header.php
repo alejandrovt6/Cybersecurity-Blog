@@ -24,9 +24,9 @@
             <?php 
                 $categories = getCategories($db);
                 if(!empty($categories)):
-                while($categorie = mysqli_fetch_assoc($categories)): 
+                while($category = mysqli_fetch_assoc($categories)): 
             ?>
-                <li><a href="categorie.php?id=<?= $categorie['id'] ?>"><?= $categorie['name'] ?></li>
+                <li><a href="category.php?id=<?= $category['id'] ?>"><?= $category['name'] ?></li>
             <?php
                 endwhile; 
                 endif;
