@@ -108,3 +108,19 @@ function getLastPosts($connection) {
 
     return $result;
 }
+
+function getPost($connection, $id) {
+    $sql = "SELECT p.*, c.name AS 'category'
+            FROM posts p
+            INNER JOIN categories c ON p.category_id = c.id
+            WHERE p.id = $id";
+
+    $post = mysqli_query($connection, $sql);
+    $result = array();
+
+    if ($post && mysqli_num_rows($post) >= 1) {
+        $result = mysqli_fetch_assoc($post);
+    }
+
+    return $result;
+}

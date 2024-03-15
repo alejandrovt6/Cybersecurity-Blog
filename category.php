@@ -21,7 +21,7 @@
             while($post = mysqli_fetch_assoc($posts)):
     ?>
         <article id="post">
-            <a href="">
+            <a href="post.php?id=<?= $post['id'] ?>">
                 <h2> 
                     <?= $post['title'] ?>
                 </h2>
