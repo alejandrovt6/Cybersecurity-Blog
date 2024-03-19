@@ -110,10 +110,9 @@ function getLastPosts($connection) {
 }
 
 function getPost($connection, $id) {
-    $sql = "SELECT p.*, c.name AS 'category'
-            FROM posts p
-            INNER JOIN categories c ON p.category_id = c.id
-            WHERE p.id = $id";
+    $sql = "SELECT p.*, c.name AS 'category' FROM posts p ".
+            "INNER JOIN categories c ON p.category_id = c.id ".
+            "WHERE p.id = $id";
 
     $post = mysqli_query($connection, $sql);
     $result = array();

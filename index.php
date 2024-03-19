@@ -1,6 +1,5 @@
 <?php require_once 'includes/header.php'; ?>
 
-
 <!-- MAIN -->
 <div id="main">
     <h1>Last posts</h1>
@@ -11,7 +10,7 @@
             while($post = mysqli_fetch_assoc($posts)):
     ?>
         <article id="post">
-            <a href="post.php?id=<?= $post['id'] ?>">
+            <a href="post.php?id=<?=$post['id']?>">
                 <h2> 
                     <?= $post['title'] ?>
                 </h2>
