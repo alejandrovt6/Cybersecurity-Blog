@@ -56,42 +56,51 @@ function getCategory($connection, $id) {
     return $result;
 }
 
-function getPosts($connection, $limit = null, $category = null) {
+function getPosts($connection, $limit = null, $category = null, $search = null) {
     $sql = "SELECT p.*, c.*
             FROM posts p
-            INNER JOIN categories c ON p.category_id = c.id";
+            INNER JOIN categories c ON p.category_id = c.id
+            WHERE 1 = 1";
 
-    if(!empty($category) && is_int($category)) {
-        $sql .= "WHERE p.category_id = $category";
+    if (!empty($category) && is_int($category)) {
+        $sql .= " AND p.category_id = ?";
     }
 
-    if ($category) {
-        $sql .= " WHERE p.category_id = $category";
+    if (!empty($search)) {
+        $sql .= " AND p.title LIKE ?";
     }
 
     $sql .= " ORDER BY p.id DESC";
 
     if ($limit) {
-
-        $sql .= " LIMIT $limit";
+        $sql .= " LIMIT ?";
     }
 
-    $posts = mysqli_query($connection, $sql);
+    $stmt = mysqli_prepare($connection, $sql);
 
-    if (!$posts) {
-
+    if (!$stmt) {
         return false;
     }
 
-    $num_rows = mysqli_num_rows($posts);
-    $result = array();
-
-    if ($num_rows >= 1) {
-        $result = $posts;
+    if (!empty($category) && is_int($category)) {
+        mysqli_stmt_bind_param($stmt, "i", $category);
     }
 
-    return $result;
+    if (!empty($search)) {
+        $searchTerm = "%$search%";
+        mysqli_stmt_bind_param($stmt, "s", $searchTerm);
+    }
+
+    if ($limit) {
+        mysqli_stmt_bind_param($stmt, "i", $limit);
+    }
+
+    mysqli_stmt_execute($stmt);
+    $posts = mysqli_stmt_get_result($stmt);
+
+    return $posts;
 }
+
 
 function getLastPosts($connection) {
     $sql = "SELECT p.*, c.*

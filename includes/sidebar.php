@@ -1,5 +1,15 @@
 <!-- ASIDE -->
 <aside id="sidebar">
+
+    <div id="search" class="block-aside">
+        <h3>Search</h3>
+
+        <form action="search.php" method="POST">
+            <input type="text" name="search">
+
+            <input type="submit" value="Search">
+        </form>
+    </div>
     <!-- Incorrect login -->
     <?php 
         if(isset($_SESSION['user'])) :
